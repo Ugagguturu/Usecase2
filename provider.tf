@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  project = "sinuous-tuner-414107"
+  project = "logical-factor-315804"
   region = "asia-southeast1"
   credentials = "keys.json"
 }

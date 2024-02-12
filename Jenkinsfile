@@ -1,10 +1,10 @@
 pipeline {
     agent any
         environment {
-                PROJECT_ID = 'sinuous-tuner-414107'
+                PROJECT_ID = '	logical-factor-315804'
                 CLUSTER_NAME = 'cluster-1'
                 LOCATION = 'us-west1'
-                CREDENTIALS_ID = 'terraform'
+                CREDENTIALS_ID = 'gke'
         }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
             stage('Build Docker Image') {
                     steps {
                             script {
-                                    sh "docker build -t vengalarao7/dev:${env.BUILD_ID} ."
+                                    sh "docker build -t udaygagguturu/dev:${env.BUILD_ID} ."
                             }
                     }
             }
@@ -37,8 +37,8 @@ pipeline {
                             script {
                                     echo "Push Docker Image"
                                     withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                                        sh "docker login -u vengalarao7 -p ${dockerhub}"
-                                        sh "docker push vengalarao7/dev:${env.BUILD_ID}"
+                                        sh "docker login -u udaygagguturu -p ${dockerhub}"
+                                        sh "docker push udaygagguturu/dev:${env.BUILD_ID}"
                                     }
                             }
                     }
